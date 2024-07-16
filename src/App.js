@@ -1,9 +1,12 @@
 import React from "react";
 import "./styles/main.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
+
 import Footer from "./base/Footer";
 import Header from "./base/Header";
+
+import Home from "./pages/Home";
+import Login from "./pages/Login"
 
 function App() {
   return (
@@ -14,8 +17,10 @@ function App() {
     // </div>
     <BrowserRouter>
     <Header />
+
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
       <Footer />
     </BrowserRouter>

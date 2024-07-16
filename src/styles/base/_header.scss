@@ -31,6 +31,9 @@
 .main-nav-item {
   text-decoration: none;
   margin-right: 0.5rem;
+  display: flex;
+  gap: 5px;
+  align-items: center;
 }
 
 .main-nav-item:hover {
