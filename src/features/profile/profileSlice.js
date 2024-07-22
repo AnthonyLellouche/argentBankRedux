@@ -20,7 +20,7 @@ export const fetchUserProfile = createAsyncThunk(
           },
         }
       );
-      // console.log("Profile API response:", response.data);
+      console.log("Profile API response:", response.data);
       return response.data;
     } catch (error) {
       console.log("Profile API error:", error);

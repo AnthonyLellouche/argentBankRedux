@@ -26,23 +26,13 @@ const Profil = () => {
   if (error) return <p>Erreur: {error.message}</p>;
 
   return (
-    // <div>
-    //   <h1>Profile Page</h1>
-    //   {profile ? (
-    //     <div>
-    //       <p>Email: {profile.email}</p>
-    //       <p>Pseudo: {profile.userName}</p>
-    //     </div>
-    //   ) : (
-    //     <p>Les données ne sont pas disponible.</p>
-    //   )}
-    // </div>
     <main className="main bg-dark">
       <div className="header">
         <h1>
           Welcome back
           <br />
-          {profile.userName}
+          {profile ? profile.firstName : ""} 
+          {profile ? profile.lastName : ""}
         </h1>
         <button className="edit-button">Edit Name</button>
       </div>
