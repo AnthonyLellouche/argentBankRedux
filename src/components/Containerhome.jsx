@@ -6,7 +6,7 @@ import info from "../info.json";
 const Containerhome = () => {
   return (
     <div className="container">
-      {info.map((item) => (
+      {info.card.map((item) => (
         <div key={item.id} className="container-item">
           <div className="container-font">
             <img src={item.icon} alt="icon" />

@@ -1,8 +1,8 @@
-// src/components/Login.jsx
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
+
 import "../styles/pages/login.scss";
 
 const Login = () => {
@@ -14,7 +14,6 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form data:", { email, password });
     dispatch(loginUser({ email, password })).then((result) => {
       if (result.meta.requestStatus === "fulfilled") {
         navigate("/profil");
@@ -43,6 +42,7 @@ const Login = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                autoComplete="username"
               />
             </div>
             <div className="input-wrapper">
@@ -53,6 +53,7 @@ const Login = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
+                autoComplete="current-password"
               />
             </div>
             <div className="input-remember">
@@ -60,7 +61,7 @@ const Login = () => {
               <label htmlFor="remember-me">Remember me</label>
             </div>
             <button type="submit" className="sign-in-button" disabled={loading}>
-              {loading ? "Logging in..." : "Sign In"}
+              {loading ? "Connexion..." : "Sign In"}
             </button>
             {error && <p>{error.message}</p>}
           </form>

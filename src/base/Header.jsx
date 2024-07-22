@@ -8,13 +8,12 @@ import { logout } from "../features/auth/authSlice";
 const Header = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
+  const profile = useSelector((state) => state.profile.profile);
 
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
   };
-
-  const userName = user?.profile?.body?.userName;
 
   return (
     <nav className="main-nav">
@@ -26,10 +25,13 @@ const Header = () => {
         />
         <h1 className="sr-only">Argent Bank</h1>
       </NavLink>
-      <div>
-        {user ? (
+      <div className="main-nav-right">
+        {user && profile ? (
           <>
-            <span className="main-nav-item">{userName}</span>
+            <NavLink to="/profil" className="main-nav-item">
+              <i className="fa fa-user-circle"></i>
+              {profile.userName}
+            </NavLink>
             <a href="/" onClick={handleLogout} className="main-nav-item">
               <i className="fa fa-sign-out"></i>
               Sign Out
