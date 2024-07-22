@@ -4,6 +4,9 @@
   
   .bg-dark {
     background-color: #12002b;
+    width: 100%;
+    display: flex;
+    padding-bottom: 32rem;
   }
   
   @media (min-width: 920px) {
