@@ -53,40 +53,47 @@ const Profil = () => {
 
   return (
     <main className="main bg-dark">
-      <div className="header">
+      <div className="header-account">
         {isEditing ? (
           <form onSubmit={handleFormSubmit}>
             <h1>Edit User info</h1>
-            <div>
-              <label>First Name</label>
-              <input
-                type="text"
-                value={profile.firstName}
-                readOnly
-                aria-label="First name"
-              />
+            <div className="container-input">
+              <div>
+                <label>Username : </label>
+                <input
+                  className="container-input__label--username"
+                  type="text"
+                  value={newUserName}
+                  onChange={(e) => setNewUserName(e.target.value)}
+                />
+              </div>
+              <div>
+                <label>First Name : </label>
+                <input
+                  className="container-input__label--firstname"
+                  type="text"
+                  value={profile.firstName}
+                  disabled="disabled"
+                  aria-label="First name"
+                />
+              </div>
+              <div>
+                <label>Last Name : </label>
+                <input
+                  className="container-input__label--lastname"
+                  type="text"
+                  value={profile.lastName}
+                  aria-label="Last name"
+                  disabled="disabled"
+                />
+              </div>
             </div>
-            <div>
-              <label>Last Name</label>
-              <input
-                type="text"
-                value={profile.lastName}
-                readOnly
-                aria-label="Last name"
-              />
+            <div className="container-button">
+              <button type="submit">Save</button>
+              <button type="button" onClick={handleCancelClick}>
+                Cancel
+              </button>
             </div>
-            <div>
-              <label>Username</label>
-              <input
-                type="text"
-                value={newUserName}
-                onChange={(e) => setNewUserName(e.target.value)}
-              />
-            </div>
-            <button type="submit">Save</button>
-            <button type="button" onClick={handleCancelClick}>
-              Cancel
-            </button>
           </form>
         ) : (
           <>

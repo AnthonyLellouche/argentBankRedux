@@ -13,8 +13,48 @@
 }
 
 .main {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+}
 
+.container-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 30px;
+  font-size: 1.5rem;
+  &__label {
+    &--firstname,
+    &--lastname {
+      cursor: not-allowed;
+      height: 30px;
+      font-size: 1.5rem;
+    }
+    &--username {
+      height: 30px;
+      font-size: 1.5rem;
+    }
   }
+}
 
+.container-button {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  & button {
+    background-color: #00bc77;
+    height: 50px;
+    width: 130px;
+    font-size: 1.3rem;
+    color: white;
+  }
+}
+
+@media (max-width: 920px) {
+  .container {
+    flex-direction: column;
+  }
+}
