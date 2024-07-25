@@ -20,10 +20,40 @@ export const fetchUserProfile = createAsyncThunk(
           },
         }
       );
-      console.log("Profile API response:", response.data);
+      // console.log("Profile API response:", response.data);
       return response.data;
     } catch (error) {
       console.log("Profile API error:", error);
+      if (!error.response) {
+        throw error;
+      }
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+// maj username utilisat
+export const updateUserProfile = createAsyncThunk(
+  "profile/updateUserProfile",
+  async (userName, { rejectWithValue }) => {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No token found");
+      }
+      const response = await axios.put(
+        `${apiUrl}/profile`,
+        { userName },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log("Update Profile API response:", response.data);
+      return response.data;
+    } catch (error) {
+      console.log("Update Profile API error:", error);
       if (!error.response) {
         throw error;
       }
@@ -55,6 +85,18 @@ const profileSlice = createSlice({
         state.profile = action.payload.body;
       })
       .addCase(fetchUserProfile.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(updateUserProfile.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(updateUserProfile.fulfilled, (state, action) => {
+        state.loading = false;
+        state.profile = action.payload.body;
+      })
+      .addCase(updateUserProfile.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });
