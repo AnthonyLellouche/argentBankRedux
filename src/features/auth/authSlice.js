@@ -2,16 +2,15 @@ import { apiUrl } from "../../config";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// connexion utilisateur avec enregistrement token dans le localstorage
+// connexion utilisateur avec enregistrement token dans le state reddux avec persist
 export const loginUser = createAsyncThunk(
   "auth/loginUser",
   async (userData, { rejectWithValue }) => {
     try {
       const response = await axios.post(`${apiUrl}/login`, userData);
       const token = response.data.body.token;
-      localStorage.setItem("token", token);
       console.log("API response:", response.data);
-      return response.data;
+      return { ...response.data, token };
     } catch (error) {
       console.log("API error:", error);
       if (!error.response) {
@@ -24,6 +23,7 @@ export const loginUser = createAsyncThunk(
 
 const initialState = {
   user: null,
+  token: null,
   loading: false,
   error: null,
 };
@@ -34,7 +34,7 @@ const authSlice = createSlice({
   reducers: {
     logout: (state) => {
       state.user = null;
-      localStorage.removeItem("token");
+      state.token = null;
     },
     reset: (state) => initialState,
   },
@@ -47,6 +47,7 @@ const authSlice = createSlice({
       .addCase(loginUser.fulfilled, (state, action) => {
         state.loading = false;
         state.user = action.payload;
+        state.token = action.payload.token;
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
