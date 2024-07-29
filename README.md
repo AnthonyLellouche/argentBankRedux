@@ -1,6 +1,8 @@
-# Getting Started with Create React App and Redux
+# Cette application a été crée avec CRA et Redux en template. ArgentBank
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+
+PersistRedux a été ajouté.
 
 ## Available Scripts
 
