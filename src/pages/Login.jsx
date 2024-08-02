@@ -10,7 +10,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { loading, error, user } = useSelector((state) => state.auth);
+  const { loading, error } = useSelector((state) => state.auth);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,12 +20,6 @@ const Login = () => {
       }
     });
   };
-
-  useEffect(() => {
-    if (user) {
-      navigate("/");
-    }
-  }, [user, navigate]);
 
   return (
     <div>
