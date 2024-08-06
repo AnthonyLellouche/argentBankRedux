@@ -11,14 +11,8 @@ import Profil from "./pages/Profil";
 
 function App() {
   return (
-    // <div className="App">
-    //   <header className="App-header">
-    //     <Counter />
-    //   </header>
-    // </div>
     <BrowserRouter>
       <Header />
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />

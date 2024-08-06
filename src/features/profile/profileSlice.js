@@ -21,7 +21,6 @@ export const fetchUserProfile = createAsyncThunk(
           },
         }
       );
-      // console.log("Profile API response:", response.data);
       return response.data;
     } catch (error) {
       console.log("Profile API error:", error);
@@ -51,7 +50,6 @@ export const updateUserProfile = createAsyncThunk(
           },
         }
       );
-      console.log("Update Profile API response:", response.data);
       return response.data;
     } catch (error) {
       console.log("Update Profile API error:", error);
